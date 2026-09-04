@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login — SEJUKIN | AC Sejuk. Rumah Nyaman.</title>
+  <meta name="description" content="Masuk ke akun SEJUKIN Anda untuk mengelola layanan service AC secara mudah dan profesional.">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="auth.css">
+</head>
+<body>
+  <div class="auth-page login-page">
+
+    <!-- ===== LEFT SIDE ===== -->
+    <div class="auth-left">
+      <img src="login-bg.png" alt="Teknisi AC Profesional SEJUKIN" class="auth-left-img">
+      <div class="auth-left-overlay"></div>
+      <div class="auth-left-content">
+        <a href="index.html" class="auth-left-logo">
+          <div class="logo-icon">❄</div>
+          SEJUKIN
+        </a>
+
+        <div class="auth-left-body">
+          <div class="auth-left-eyebrow">Welcome back</div>
+          <h2 class="auth-left-tagline">AC Sejuk.<br>Rumah Nyaman.</h2>
+          <p class="auth-left-sub">Professional AC service made simple.</p>
+
+          <div class="auth-benefits">
+            <div class="auth-benefit">
+              <div class="auth-benefit-icon">✓</div>
+              <span>Professional Technicians</span>
+            </div>
+            <div class="auth-benefit">
+              <div class="auth-benefit-icon">✓</div>
+              <span>Easy Booking</span>
+            </div>
+            <div class="auth-benefit">
+              <div class="auth-benefit-icon">✓</div>
+              <span>Service History</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="auth-left-footer">
+          © 2026 SEJUKIN. All rights reserved.
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== RIGHT SIDE ===== -->
+    <div class="auth-right">
+      <div class="auth-form-container">
+
+        <!-- Mobile Logo -->
+        <div class="auth-mobile-logo">
+          <a href="index.html" class="nav-logo">
+            <div class="logo-icon">❄</div>
+            <span>SEJUKIN</span>
+          </a>
+        </div>
+
+        <h1 class="auth-heading">Welcome Back</h1>
+        <p class="auth-subheading">Masuk untuk mengelola layanan AC Anda.</p>
+
+        <!-- Success / Error Banner -->
+        <div class="auth-alert auth-alert-success" id="successAlert" style="display:none">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          Login berhasil! Mengarahkan...
+        </div>
+        <div class="auth-alert auth-alert-error" id="errorAlert" style="display:none">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          <span id="errorMsg">Email atau password salah.</span>
+        </div>
+
+        <form class="auth-form" id="loginForm" novalidate>
+
+          <!-- Email -->
+          <div class="form-group">
+            <label class="form-label" for="email">Email</label>
+            <div class="input-wrapper">
+              <div class="input-icon">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              </div>
+              <input
+                type="email"
+                id="email"
+                class="form-input"
+                placeholder="nama@email.com"
+                autocomplete="email"
+              >
+            </div>
+            <span class="form-error" id="emailError"></span>
+          </div>
+
+          <!-- Password -->
+          <div class="form-group">
+            <label class="form-label" for="password">Password</label>
+            <div class="input-wrapper">
+              <div class="input-icon">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+              </div>
+              <input
+                type="password"
+                id="password"
+                class="form-input"
+                placeholder="Masukkan password Anda"
+                autocomplete="current-password"
+              >
+              <button type="button" class="input-icon input-icon-right toggle-password" data-target="password" aria-label="Toggle password visibility">
+                <svg class="eye-open" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                <svg class="eye-closed" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/></svg>
+              </button>
+            </div>
+            <span class="form-error" id="passwordError"></span>
+          </div>
+
+          <!-- Remember / Forgot -->
+          <div class="checkbox-row">
+            <label class="checkbox-label">
+              <input type="checkbox" id="rememberMe">
+              Remember me
+            </label>
+            <a href="#" class="forgot-link">Forgot password?</a>
+          </div>
+
+          <!-- Submit Button -->
+          <button type="submit" class="btn btn-primary btn-full" id="loginBtn">
+            <span class="btn-text">Masuk</span>
+          </button>
+
+          <!-- Divider -->
+          <div class="divider">atau</div>
+
+          <!-- Google -->
+          <button type="button" class="btn-google" id="googleBtn">
+            <svg width="18" height="18" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+              <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+              <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
+              <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+            </svg>
+            Continue with Google
+          </button>
+
+        </form>
+
+        <div class="auth-footer">
+          Belum punya akun? <a href="register.html">Daftar sekarang</a>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // ===== Toggle Password =====
+    document.querySelectorAll('.toggle-password').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const input = document.getElementById(btn.dataset.target);
+        const isPassword = input.type === 'password';
+        input.type = isPassword ? 'text' : 'password';
+        btn.querySelector('.eye-open').style.display  = isPassword ? 'none'  : '';
+        btn.querySelector('.eye-closed').style.display = isPassword ? '' : 'none';
+      });
+    });
+
+    // ===== Validation =====
+    const emailInput    = document.getElementById('email');
+    const passwordInput = document.getElementById('password');
+    const emailError    = document.getElementById('emailError');
+    const passwordError = document.getElementById('passwordError');
+    const loginBtn      = document.getElementById('loginBtn');
+    const successAlert  = document.getElementById('successAlert');
+    const errorAlert    = document.getElementById('errorAlert');
+    const errorMsg      = document.getElementById('errorMsg');
+
+    function validateEmail(v) {
+      return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
+    }
+
+    function setError(input, errorEl, msg) {
+      input.classList.add('has-error');
+      errorEl.textContent = msg;
+    }
+    function clearError(input, errorEl) {
+      input.classList.remove('has-error');
+      errorEl.textContent = '';
+    }
+
+    emailInput.addEventListener('blur', () => {
+      if (!emailInput.value) setError(emailInput, emailError, 'Email tidak boleh kosong.');
+      else if (!validateEmail(emailInput.value)) setError(emailInput, emailError, 'Format email tidak valid.');
+      else clearError(emailInput, emailError);
+    });
+    emailInput.addEventListener('input', () => {
+      if (emailInput.value && validateEmail(emailInput.value)) clearError(emailInput, emailError);
+    });
+
+    passwordInput.addEventListener('blur', () => {
+      if (!passwordInput.value) setError(passwordInput, passwordError, 'Password tidak boleh kosong.');
+      else if (passwordInput.value.length < 6) setError(passwordInput, passwordError, 'Password minimal 6 karakter.');
+      else clearError(passwordInput, passwordError);
+    });
+    passwordInput.addEventListener('input', () => {
+      if (passwordInput.value.length >= 6) clearError(passwordInput, passwordError);
+    });
+
+    // ===== Form Submit =====
+    document.getElementById('loginForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      let valid = true;
+      successAlert.style.display = 'none';
+      errorAlert.style.display   = 'none';
+
+      if (!emailInput.value || !validateEmail(emailInput.value)) {
+        setError(emailInput, emailError, emailInput.value ? 'Format email tidak valid.' : 'Email tidak boleh kosong.');
+        valid = false;
+      }
+      if (!passwordInput.value || passwordInput.value.length < 6) {
+        setError(passwordInput, passwordError, passwordInput.value ? 'Password minimal 6 karakter.' : 'Password tidak boleh kosong.');
+        valid = false;
+      }
+      if (!valid) return;
+
+      // Loading state
+      loginBtn.classList.add('btn-loading');
+      loginBtn.disabled = true;
+
+      // Simulate API call
+      setTimeout(() => {
+        loginBtn.classList.remove('btn-loading');
+        loginBtn.disabled = false;
+
+        // Mock: only accept demo credentials
+        if (emailInput.value === 'demo@sejukin.id' && passwordInput.value === 'demo123') {
+          successAlert.style.display = 'flex';
+          loginBtn.textContent = '✓ Berhasil';
+          loginBtn.style.background = 'var(--success)';
+        } else {
+          errorAlert.style.display = 'flex';
+          errorMsg.textContent = 'Email atau password salah. (Demo: demo@sejukin.id / demo123)';
+        }
+      }, 1800);
+    });
+
+    // ===== Google Button =====
+    document.getElementById('googleBtn').addEventListener('click', () => {
+      document.getElementById('googleBtn').disabled = true;
+      document.getElementById('googleBtn').innerHTML = '<div class="btn-spinner"></div> Menghubungkan...';
+      setTimeout(() => {
+        document.getElementById('googleBtn').disabled = false;
+        document.getElementById('googleBtn').innerHTML = `<svg width="18" height="18" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg> Continue with Google`;
+      }, 1500);
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Daftar — SEJUKIN | AC Sejuk. Rumah Nyaman.</title>
+  <meta name="description" content="Buat akun SEJUKIN dan nikmati kemudahan memesan jasa service AC profesional ke rumah Anda.">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="auth.css">
+</head>
+<body>
+  <div class="auth-page register-page">
+
+    <!-- ===== LEFT SIDE ===== -->
+    <div class="auth-left">
+      <img src="register-bg.png" alt="Tim Teknisi Profesional SEJUKIN" class="auth-left-img">
+      <div class="auth-left-overlay"></div>
+      <div class="auth-left-content">
+        <a href="index.html" class="auth-left-logo">
+          <div class="logo-icon">❄</div>
+          SEJUKIN
+        </a>
+
+        <div class="auth-left-body">
+          <div class="auth-left-eyebrow">Join us today</div>
+          <h2 class="auth-left-tagline">Start your journey<br>with SEJUKIN</h2>
+          <p class="auth-left-sub">Take better care of every AC in your home.</p>
+
+          <div class="auth-benefits">
+            <div class="auth-benefit">
+              <div class="auth-benefit-icon">✓</div>
+              <span>Easy Service Booking</span>
+            </div>
+            <div class="auth-benefit">
+              <div class="auth-benefit-icon">✓</div>
+              <span>Professional Technicians</span>
+            </div>
+            <div class="auth-benefit">
+              <div class="auth-benefit-icon">✓</div>
+              <span>Digital Service History</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="auth-left-footer">
+          © 2026 SEJUKIN. All rights reserved.
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== RIGHT SIDE ===== -->
+    <div class="auth-right">
+      <div class="auth-form-container auth-form-container-wide">
+
+        <!-- Mobile Logo -->
+        <div class="auth-mobile-logo">
+          <a href="index.html" class="nav-logo">
+            <div class="logo-icon">❄</div>
+            <span>SEJUKIN</span>
+          </a>
+        </div>
+
+        <h1 class="auth-heading">Create Your Account</h1>
+        <p class="auth-subheading">Daftar sekarang dan nikmati pengalaman service AC yang lebih mudah.</p>
+
+        <!-- Alerts -->
+        <div class="auth-alert auth-alert-success" id="successAlert" style="display:none">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          Akun berhasil dibuat! Selamat datang di SEJUKIN.
+        </div>
+        <div class="auth-alert auth-alert-error" id="errorAlert" style="display:none">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          <span id="errorMsg">Terjadi kesalahan. Coba lagi.</span>
+        </div>
+
+        <form class="auth-form reg-form" id="registerForm" novalidate>
+
+          <!-- Name -->
+          <div class="form-group">
+            <label class="form-label" for="fullName">Nama Lengkap</label>
+            <div class="input-wrapper">
+              <div class="input-icon">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+              </div>
+              <input type="text" id="fullName" class="form-input" placeholder="Masukkan nama lengkap" autocomplete="name">
+            </div>
+            <span class="form-error" id="nameError"></span>
+          </div>
+
+          <!-- Email -->
+          <div class="form-group">
+            <label class="form-label" for="regEmail">Email</label>
+            <div class="input-wrapper">
+              <div class="input-icon">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              </div>
+              <input type="email" id="regEmail" class="form-input" placeholder="nama@email.com" autocomplete="email">
+            </div>
+            <span class="form-error" id="regEmailError"></span>
+          </div>
+
+          <!-- Phone -->
+          <div class="form-group">
+            <label class="form-label" for="phone">Nomor HP</label>
+            <div class="input-wrapper">
+              <div class="input-icon">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.39 2 2 0 0 1 3.59 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.54a16 16 0 0 0 5.55 5.55l.95-.95a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              </div>
+              <input type="tel" id="phone" class="form-input" placeholder="08xx-xxxx-xxxx" autocomplete="tel">
+            </div>
+            <span class="form-error" id="phoneError"></span>
+          </div>
+
+          <!-- Password -->
+          <div class="form-group">
+            <label class="form-label" for="regPassword">Password</label>
+            <div class="input-wrapper">
+              <div class="input-icon">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+              </div>
+              <input type="password" id="regPassword" class="form-input" placeholder="Buat password yang kuat" autocomplete="new-password">
+              <button type="button" class="input-icon input-icon-right toggle-password" data-target="regPassword" aria-label="Toggle password">
+                <svg class="eye-open" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                <svg class="eye-closed" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/></svg>
+              </button>
+            </div>
+
+            <!-- Password Strength -->
+            <div class="strength-bar" id="strengthBar">
+              <div class="strength-segment" id="seg1"></div>
+              <div class="strength-segment" id="seg2"></div>
+              <div class="strength-segment" id="seg3"></div>
+            </div>
+            <div class="strength-label" id="strengthLabel"></div>
+            <span class="form-error" id="regPasswordError"></span>
+          </div>
+
+          <!-- Confirm Password -->
+          <div class="form-group">
+            <label class="form-label" for="confirmPassword">Konfirmasi Password</label>
+            <div class="input-wrapper">
+              <div class="input-icon">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              </div>
+              <input type="password" id="confirmPassword" class="form-input" placeholder="Ulangi password Anda" autocomplete="new-password">
+              <button type="button" class="input-icon input-icon-right toggle-password" data-target="confirmPassword" aria-label="Toggle password">
+                <svg class="eye-open" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                <svg class="eye-closed" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/></svg>
+              </button>
+            </div>
+            <span class="form-error" id="confirmError"></span>
+          </div>
+
+          <!-- Terms -->
+          <div class="form-group">
+            <label class="checkbox-label terms-label">
+              <input type="checkbox" id="agreeTerms">
+              <span>Saya menyetujui <a href="#" class="text-primary">Terms of Service</a> dan <a href="#" class="text-primary">Privacy Policy</a></span>
+            </label>
+            <span class="form-error" id="termsError"></span>
+          </div>
+
+          <!-- Submit -->
+          <button type="submit" class="btn btn-primary btn-full" id="registerBtn">
+            <span class="btn-text">Daftar</span>
+          </button>
+
+          <!-- Divider -->
+          <div class="divider">atau</div>
+
+          <!-- Google -->
+          <button type="button" class="btn-google" id="googleBtn">
+            <svg width="18" height="18" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+              <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+              <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
+              <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+            </svg>
+            Continue with Google
+          </button>
+
+        </form>
+
+        <div class="auth-footer">
+          Sudah punya akun? <a href="login.html">Masuk</a>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // ===== Toggle Password =====
+    document.querySelectorAll('.toggle-password').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const input = document.getElementById(btn.dataset.target);
+        const isPass = input.type === 'password';
+        input.type = isPass ? 'text' : 'password';
+        btn.querySelector('.eye-open').style.display  = isPass ? 'none' : '';
+        btn.querySelector('.eye-closed').style.display = isPass ? '' : 'none';
+      });
+    });
+
+    // ===== Password Strength =====
+    const regPassword  = document.getElementById('regPassword');
+    const seg1 = document.getElementById('seg1');
+    const seg2 = document.getElementById('seg2');
+    const seg3 = document.getElementById('seg3');
+    const strengthLabel = document.getElementById('strengthLabel');
+
+    function getStrength(pwd) {
+      let score = 0;
+      if (pwd.length >= 8)  score++;
+      if (/[A-Z]/.test(pwd) && /[a-z]/.test(pwd)) score++;
+      if (/[0-9]/.test(pwd)) score++;
+      if (/[^A-Za-z0-9]/.test(pwd)) score++;
+      if (score <= 1) return 'weak';
+      if (score <= 2) return 'medium';
+      return 'strong';
+    }
+
+    regPassword.addEventListener('input', () => {
+      const pwd = regPassword.value;
+      if (!pwd) {
+        [seg1, seg2, seg3].forEach(s => s.className = 'strength-segment');
+        strengthLabel.textContent = '';
+        strengthLabel.className = 'strength-label';
+        return;
+      }
+      const level = getStrength(pwd);
+      [seg1, seg2, seg3].forEach(s => s.className = 'strength-segment');
+      strengthLabel.className = 'strength-label ' + level;
+      if (level === 'weak')   { seg1.classList.add('weak'); strengthLabel.textContent = 'Weak'; }
+      if (level === 'medium') { seg1.classList.add('medium'); seg2.classList.add('medium'); strengthLabel.textContent = 'Medium'; }
+      if (level === 'strong') { seg1.classList.add('strong'); seg2.classList.add('strong'); seg3.classList.add('strong'); strengthLabel.textContent = 'Strong'; }
+    });
+
+    // ===== Validation Helpers =====
+    function validateEmail(v) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v); }
+    function setError(input, errEl, msg) {
+      if (input) input.classList.add('has-error');
+      errEl.textContent = msg;
+    }
+    function clearError(input, errEl) {
+      if (input) input.classList.remove('has-error');
+      errEl.textContent = '';
+    }
+
+    const fullName = document.getElementById('fullName');
+    const regEmail = document.getElementById('regEmail');
+    const phone    = document.getElementById('phone');
+    const confirmPassword = document.getElementById('confirmPassword');
+    const agreeTerms = document.getElementById('agreeTerms');
+
+    // Live validation on blur
+    fullName.addEventListener('blur', () => {
+      if (!fullName.value.trim()) setError(fullName, document.getElementById('nameError'), 'Nama tidak boleh kosong.');
+      else if (fullName.value.trim().length < 3) setError(fullName, document.getElementById('nameError'), 'Nama minimal 3 karakter.');
+      else clearError(fullName, document.getElementById('nameError'));
+    });
+    fullName.addEventListener('input', () => { if (fullName.value.trim().length >= 3) clearError(fullName, document.getElementById('nameError')); });
+
+    regEmail.addEventListener('blur', () => {
+      if (!regEmail.value) setError(regEmail, document.getElementById('regEmailError'), 'Email tidak boleh kosong.');
+      else if (!validateEmail(regEmail.value)) setError(regEmail, document.getElementById('regEmailError'), 'Format email tidak valid.');
+      else clearError(regEmail, document.getElementById('regEmailError'));
+    });
+    regEmail.addEventListener('input', () => { if (validateEmail(regEmail.value)) clearError(regEmail, document.getElementById('regEmailError')); });
+
+    phone.addEventListener('blur', () => {
+      if (!phone.value) setError(phone, document.getElementById('phoneError'), 'Nomor HP tidak boleh kosong.');
+      else if (!/^[0-9+\-\s]{9,15}$/.test(phone.value)) setError(phone, document.getElementById('phoneError'), 'Nomor HP tidak valid.');
+      else clearError(phone, document.getElementById('phoneError'));
+    });
+    phone.addEventListener('input', () => { if (/^[0-9+\-\s]{9,15}$/.test(phone.value)) clearError(phone, document.getElementById('phoneError')); });
+
+    regPassword.addEventListener('blur', () => {
+      if (!regPassword.value) setError(regPassword, document.getElementById('regPasswordError'), 'Password tidak boleh kosong.');
+      else if (regPassword.value.length < 8) setError(regPassword, document.getElementById('regPasswordError'), 'Password minimal 8 karakter.');
+      else clearError(regPassword, document.getElementById('regPasswordError'));
+    });
+
+    confirmPassword.addEventListener('blur', () => {
+      if (!confirmPassword.value) setError(confirmPassword, document.getElementById('confirmError'), 'Konfirmasi password tidak boleh kosong.');
+      else if (confirmPassword.value !== regPassword.value) setError(confirmPassword, document.getElementById('confirmError'), 'Password tidak cocok.');
+      else clearError(confirmPassword, document.getElementById('confirmError'));
+    });
+    confirmPassword.addEventListener('input', () => {
+      if (confirmPassword.value === regPassword.value && confirmPassword.value) clearError(confirmPassword, document.getElementById('confirmError'));
+    });
+
+    // ===== Form Submit =====
+    document.getElementById('registerForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      let valid = true;
+
+      document.getElementById('successAlert').style.display = 'none';
+      document.getElementById('errorAlert').style.display   = 'none';
+
+      if (!fullName.value.trim() || fullName.value.trim().length < 3) {
+        setError(fullName, document.getElementById('nameError'), fullName.value.trim() ? 'Nama minimal 3 karakter.' : 'Nama tidak boleh kosong.');
+        valid = false;
+      }
+      if (!regEmail.value || !validateEmail(regEmail.value)) {
+        setError(regEmail, document.getElementById('regEmailError'), regEmail.value ? 'Format email tidak valid.' : 'Email tidak boleh kosong.');
+        valid = false;
+      }
+      if (!phone.value || !/^[0-9+\-\s]{9,15}$/.test(phone.value)) {
+        setError(phone, document.getElementById('phoneError'), phone.value ? 'Nomor HP tidak valid.' : 'Nomor HP tidak boleh kosong.');
+        valid = false;
+      }
+      if (!regPassword.value || regPassword.value.length < 8) {
+        setError(regPassword, document.getElementById('regPasswordError'), regPassword.value ? 'Password minimal 8 karakter.' : 'Password tidak boleh kosong.');
+        valid = false;
+      }
+      if (!confirmPassword.value || confirmPassword.value !== regPassword.value) {
+        setError(confirmPassword, document.getElementById('confirmError'), confirmPassword.value ? 'Password tidak cocok.' : 'Konfirmasi password tidak boleh kosong.');
+        valid = false;
+      }
+      if (!agreeTerms.checked) {
+        setError(null, document.getElementById('termsError'), 'Anda harus menyetujui Terms of Service.');
+        valid = false;
+      } else {
+        clearError(null, document.getElementById('termsError'));
+      }
+
+      if (!valid) return;
+
+      const registerBtn = document.getElementById('registerBtn');
+      registerBtn.classList.add('btn-loading');
+      registerBtn.disabled = true;
+
+      setTimeout(() => {
+        registerBtn.classList.remove('btn-loading');
+        registerBtn.disabled = false;
+        document.getElementById('successAlert').style.display = 'flex';
+        registerBtn.querySelector('.btn-text').textContent = '✓ Akun Dibuat';
+        registerBtn.style.background = 'var(--success)';
+      }, 2000);
+    });
+
+    // ===== Google Button =====
+    document.getElementById('googleBtn').addEventListener('click', () => {
+      const btn = document.getElementById('googleBtn');
+      btn.disabled = true;
+      btn.textContent = 'Menghubungkan...';
+      setTimeout(() => {
+        btn.disabled = false;
+        btn.innerHTML = `<svg width="18" height="18" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg> Continue with Google`;
+      }, 1500);
+    });
+  </script>
+</body>
+</html>
