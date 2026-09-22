@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
-import { Snowflake, Menu, X, PhoneCall } from 'lucide-react'
+import { Snowflake, Menu, X, PhoneCall, LayoutDashboard } from 'lucide-react'
 import { cn } from '@/lib/utils'
+import { useAuth } from '@/contexts/AuthContext'
 
 const navLinks = [
   { label: 'Home', href: '/#home' },
@@ -9,9 +10,11 @@ const navLinks = [
   { label: 'Why SEJUKIN', href: '/#why' },
   { label: 'How It Works', href: '/#how-it-works' },
   { label: 'About', href: '/#about' },
+  { label: 'Dashboard', href: '/dashboard' },
 ]
 
 export default function Navbar() {
+  const { user } = useAuth()
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileOpen, setIsMobileOpen] = useState(false)
   const [activeSection, setActiveSection] = useState('home')
@@ -82,32 +85,70 @@ export default function Navbar() {
 
             {/* Desktop Nav */}
             <nav className="hidden lg:flex items-center gap-1">
-              {navLinks.map(link => {
-                const sectionId = link.href.slice(2)
-                const isActive = isLanding && activeSection === sectionId
+              {navLinks.map((link) => {
+                if (link.href.startsWith('/#')) {
+                  const sectionId = link.href.slice(2)
+                  const isActive = isLanding && activeSection === sectionId
+                  return (
+                    <button
+                      key={link.href}
+                      onClick={() => handleNavClick(link.href)}
+                      className={cn(
+                        'nav-link px-3 py-2 rounded-lg text-sm font-medium transition-colors',
+                        isActive
+                          ? 'text-brand-blue bg-brand-blue-light'
+                          : 'text-slate-600 hover:text-brand-blue hover:bg-slate-50'
+                      )}
+                    >
+                      {link.label}
+                    </button>
+                  )
+                }
+
+                // Regular link (e.g. /dashboard)
+                const isActive = location.pathname.startsWith(link.href)
                 return (
-                  <button
+                  <Link
                     key={link.href}
-                    onClick={() => handleNavClick(link.href)}
+                    to={link.href}
                     className={cn(
-                      'nav-link px-3 py-2 rounded-lg',
-                      isActive && 'text-brand-blue bg-brand-blue-light'
+                      'nav-link px-3 py-2 rounded-lg text-sm font-medium transition-colors',
+                      isActive
+                        ? 'text-brand-blue bg-brand-blue-light'
+                        : 'text-slate-600 hover:text-brand-blue hover:bg-slate-50'
                     )}
                   >
                     {link.label}
-                  </button>
+                  </Link>
                 )
               })}
             </nav>
 
             {/* Desktop Actions */}
             <div className="hidden lg:flex items-center gap-3">
-              <Link to="/login" className="btn-ghost text-sm">
-                Login
-              </Link>
-              <Link to="/login" className="btn-primary text-sm px-5 py-2.5">
-                Book Service
-              </Link>
+              {user ? (
+                <>
+                  <Link
+                    to="/dashboard"
+                    className="btn-secondary text-sm px-4 py-2 flex items-center gap-2"
+                  >
+                    <LayoutDashboard className="w-4 h-4 text-brand-blue" />
+                    Dashboard
+                  </Link>
+                  <Link to="/dashboard/booking" className="btn-primary text-sm px-5 py-2.5">
+                    Pesan Service
+                  </Link>
+                </>
+              ) : (
+                <>
+                  <Link to="/login" className="btn-ghost text-sm">
+                    Login
+                  </Link>
+                  <Link to="/login" className="btn-primary text-sm px-5 py-2.5">
+                    Book Service
+                  </Link>
+                </>
+              )}
             </div>
 
             {/* Mobile Hamburger */}
@@ -130,7 +171,9 @@ export default function Navbar() {
       <div
         className={cn(
           'fixed inset-0 z-40 lg:hidden transition-all duration-300',
-          isMobileOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
+          isMobileOpen
+            ? 'opacity-100 pointer-events-auto'
+            : 'opacity-0 pointer-events-none'
         )}
       >
         {/* Backdrop */}
@@ -162,16 +205,30 @@ export default function Navbar() {
             </button>
           </div>
 
-          <nav className="flex flex-col p-4 gap-1 flex-1">
-            {navLinks.map(link => (
-              <button
-                key={link.href}
-                onClick={() => handleNavClick(link.href)}
-                className="text-left px-4 py-3 text-[#64748B] font-medium rounded-xl hover:bg-brand-blue-light hover:text-brand-blue transition-colors"
-              >
-                {link.label}
-              </button>
-            ))}
+          <nav className="flex flex-col p-4 gap-1 flex-1 overflow-y-auto">
+            {navLinks.map((link) => {
+              if (link.href.startsWith('/#')) {
+                return (
+                  <button
+                    key={link.href}
+                    onClick={() => handleNavClick(link.href)}
+                    className="text-left px-4 py-3 text-[#64748B] font-medium rounded-xl hover:bg-brand-blue-light hover:text-brand-blue transition-colors"
+                  >
+                    {link.label}
+                  </button>
+                )
+              }
+              return (
+                <Link
+                  key={link.href}
+                  to={link.href}
+                  onClick={() => setIsMobileOpen(false)}
+                  className="text-left px-4 py-3 text-[#64748B] font-medium rounded-xl hover:bg-brand-blue-light hover:text-brand-blue transition-colors"
+                >
+                  {link.label}
+                </Link>
+              )
+            })}
           </nav>
 
           <div className="p-4 flex flex-col gap-3 border-t border-slate-100">
@@ -179,12 +236,42 @@ export default function Navbar() {
               <PhoneCall className="w-4 h-4 text-brand-blue flex-shrink-0" />
               <span className="text-sm font-medium text-brand-navy">+62 812-3456-7890</span>
             </div>
-            <Link to="/login" className="btn-ghost justify-center" onClick={() => setIsMobileOpen(false)}>
-              Login
-            </Link>
-            <Link to="/login" className="btn-primary justify-center" onClick={() => setIsMobileOpen(false)}>
-              Book Service
-            </Link>
+            {user ? (
+              <>
+                <Link
+                  to="/dashboard"
+                  className="btn-secondary justify-center flex items-center gap-2"
+                  onClick={() => setIsMobileOpen(false)}
+                >
+                  <LayoutDashboard className="w-4 h-4 text-brand-blue" />
+                  Dashboard
+                </Link>
+                <Link
+                  to="/dashboard/booking"
+                  className="btn-primary justify-center"
+                  onClick={() => setIsMobileOpen(false)}
+                >
+                  Pesan Service
+                </Link>
+              </>
+            ) : (
+              <>
+                <Link
+                  to="/login"
+                  className="btn-ghost justify-center"
+                  onClick={() => setIsMobileOpen(false)}
+                >
+                  Login
+                </Link>
+                <Link
+                  to="/login"
+                  className="btn-primary justify-center"
+                  onClick={() => setIsMobileOpen(false)}
+                >
+                  Book Service
+                </Link>
+              </>
+            )}
           </div>
         </div>
       </div>

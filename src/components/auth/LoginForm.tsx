@@ -2,7 +2,7 @@ import { useState, useId } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { Eye, EyeOff, Loader2, CheckCircle, AlertCircle, ArrowRight } from 'lucide-react'
 import { cn } from '@/lib/utils'
-import { loginWithDemo, loginWithGoogle } from '@/services/authService'
+import { loginWithDemo, loginWithGoogle, loginWithEmail } from '@/services/authService'
 import type { User } from '@/types'
 import { isSupabaseConfigured } from '@/lib/supabase'
 
@@ -58,7 +58,6 @@ export default function LoginForm({ onSuccess }: LoginFormProps) {
         throw new Error('Username atau password tidak valid. Silakan coba lagi.')
       }
 
-      const { loginWithEmail } = await import('@/services/authService')
       const user = await loginWithEmail(formData.usernameOrEmail, formData.password)
       onSuccess(user)
       navigate('/dashboard', { replace: true })
