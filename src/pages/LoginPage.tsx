@@ -13,7 +13,7 @@ export default function LoginPage() {
   useEffect(() => {
     const user = getDemoUser()
     if (user) {
-      navigate('/login-success', { replace: true })
+      navigate('/dashboard', { replace: true })
     }
   }, [navigate])
 
