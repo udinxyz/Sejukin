@@ -59,20 +59,7 @@ export default function LoginSuccessPage() {
           if (error) {
             console.warn('setSession warning:', error)
           } else if (data?.session?.user && isMounted) {
-            setUser({
-              id: data.session.user.id,
-              email: data.session.user.email ?? '',
-              full_name:
-                data.session.user.user_metadata?.full_name ||
-                data.session.user.user_metadata?.name ||
-                data.session.user.email?.split('@')[0],
-              avatar_url:
-                data.session.user.user_metadata?.avatar_url ||
-                data.session.user.user_metadata?.picture,
-              created_at: data.session.user.created_at,
-            })
-            setLoading(false)
-            setTimeout(() => setIsVisible(true), 50)
+            navigate('/dashboard', { replace: true })
             return
           }
         } catch (e) {
@@ -86,20 +73,7 @@ export default function LoginSuccessPage() {
         try {
           const { data, error } = await supabase.auth.exchangeCodeForSession(code)
           if (!error && data?.session?.user && isMounted) {
-            setUser({
-              id: data.session.user.id,
-              email: data.session.user.email ?? '',
-              full_name:
-                data.session.user.user_metadata?.full_name ||
-                data.session.user.user_metadata?.name ||
-                data.session.user.email?.split('@')[0],
-              avatar_url:
-                data.session.user.user_metadata?.avatar_url ||
-                data.session.user.user_metadata?.picture,
-              created_at: data.session.user.created_at,
-            })
-            setLoading(false)
-            setTimeout(() => setIsVisible(true), 50)
+            navigate('/dashboard', { replace: true })
             return
           }
         } catch (e) {
@@ -111,20 +85,7 @@ export default function LoginSuccessPage() {
       for (let attempt = 0; attempt < 6; attempt++) {
         const { data: { session } } = await supabase.auth.getSession()
         if (session?.user && isMounted) {
-          setUser({
-            id: session.user.id,
-            email: session.user.email ?? '',
-            full_name:
-              session.user.user_metadata?.full_name ||
-              session.user.user_metadata?.name ||
-              session.user.email?.split('@')[0],
-            avatar_url:
-              session.user.user_metadata?.avatar_url ||
-              session.user.user_metadata?.picture,
-            created_at: session.user.created_at,
-          })
-          setLoading(false)
-          setTimeout(() => setIsVisible(true), 50)
+          navigate('/dashboard', { replace: true })
           return
         }
         // Tunggu 300ms sebelum retry
@@ -294,10 +255,10 @@ export default function LoginSuccessPage() {
               <div className="flex flex-col sm:flex-row gap-3">
                 <Link to="/" className="btn-secondary flex-1 justify-center">
                   <Home className="w-4 h-4" />
-                  Back to Home
+                  Kembali ke Beranda
                 </Link>
-                <Link to="/" className="btn-primary flex-1 justify-center">
-                  Continue
+                <Link to="/dashboard" className="btn-primary flex-1 justify-center">
+                  Buka Dashboard
                   <ArrowRight className="w-4 h-4" />
                 </Link>
               </div>

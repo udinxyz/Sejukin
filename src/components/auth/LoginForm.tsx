@@ -40,12 +40,28 @@ export default function LoginForm({ onSuccess }: LoginFormProps) {
 
     setIsLoading(true)
     try {
-      const user = await loginWithDemo({
-        usernameOrEmail: formData.usernameOrEmail,
-        password: formData.password,
-      })
+      // Coba demo login dulu (username: sejukin / password: sejukbanget23)
+      try {
+        const user = await loginWithDemo({
+          usernameOrEmail: formData.usernameOrEmail,
+          password: formData.password,
+        })
+        onSuccess(user)
+        navigate('/dashboard', { replace: true })
+        return
+      } catch {
+        // Bukan demo credentials, lanjut ke Supabase email login
+      }
+
+      // Fallback: Supabase email login
+      if (!isSupabaseConfigured) {
+        throw new Error('Username atau password tidak valid. Silakan coba lagi.')
+      }
+
+      const { loginWithEmail } = await import('@/services/authService')
+      const user = await loginWithEmail(formData.usernameOrEmail, formData.password)
       onSuccess(user)
-      navigate('/login-success', { replace: true })
+      navigate('/dashboard', { replace: true })
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Terjadi kesalahan. Silakan coba lagi.')
     } finally {
